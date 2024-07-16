@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>My Account</title>
+    <link rel="icon" href="icon.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #FFD92A;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        .hero {
+            width: 100%;
+            height: 100%;
+        }
+        nav {
+            width: 100%;
+            height: 15%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #76110F;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        nav .logo{
+                width: 200px;
+                cursor: pointer;
+                margin-right: 2%;
+                margin-left: 0%;
+                margin-top: 2%;
+                margin-bottom: 2%;
+                align-items: center;
+            }
+        nav ul{
+                flex: 1;
+                text-align: center;
+                margin-left: 130px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            nav ul li{
+                list-style: none;
+                display: inline-flex;
+                margin: 10px 12px;
+                margin-bottom: 0%;
+                margin-right: 0%;
+                position: relative;
+            }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 24px;
+            padding: 3px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        nav ul li a::after {
+                content: '';
+                position: absolute;
+                left: 45%;
+                bottom: -33px;
+                width: 100%;
+                height: 5px;
+                background: #FFD92A;
+                transition: width 0.3s ease, left 0.3s ease;
+                z-index: -1;
+                transform: translateX(-15%) scaleX(0);
+                transform-origin: center;
+                border-radius: 10%;
+            }
+            nav ul li a:hover::after,
+            nav ul li a.active::after {
+                width: 125%;
+                height: 260%;
+                left: -0.25%;
+                transform: translateX(-9%) scaleX(0.9);
+            }
+            nav ul li a:hover,
+            nav ul li a.active {
+                color: #76110F;
+            }
+            nav .dropdown {
+            float: right;
+            overflow: hidden;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            
+        }
+
+        nav .dropdown .dropbtn {  
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            margin: 0;
+            font-size: 24px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 24px;
+            padding: 3px;
+            position: relative;
+            align-items: center;
+            margin-right: 100px;
+            padding-right: 10px;
+            border-radius: 5px;
+            padding-top: 10%;
+            padding-bottom: 8%;
+        }
+
+        nav .dropdown-content {
+            border-radius: 5px;
+            display: none;
+            position: absolute;
+            background-color: #FFD92A;
+            min-width: 128px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        nav .dropdown-content a {
+            float: none;
+            color: #76110F;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-size: larger;
+        }
+
+        nav .dropdown-content a:hover {
+            background-color: #FFD92A;
+            color: #fff;
+        }
+
+        nav .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        nav .dropdown:hover .dropbtn {
+            background-color: #FFD92A;
+            color: #76110F;
+        }
+        .content {
+            position: absolute;
+            color: #76110F;
+            font-family:'Times New Roman', Times, serif;
+            top: 16%;
+            width: 100%;
+            padding: 3.5px;
+        }
+        .user {
+            width: 14%;
+            height: 15%;
+            margin-top: 2.48%;
+            margin-right: 0px;
+            margin-left: 8%;
+        }
+        .profile-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12.50px;
+        }
+
+        .details {
+            flex: 1; /* Distribute space evenly among children */
+            padding-right: 3%;
+            padding-left: 3%;
+        }
+
+        /* Styling for input fields */
+        .details input[type="text"] {
+        width: 90%;
+        padding: 7px;
+        margin-bottom: -8px;
+        border: 1px solid #76110F; /* Border color */
+        border-radius: 20px;
+        box-shadow: 1px;
+        background-color: white; /* Background color */
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .details input[type="text"]:focus {
+            
+            border-color: #76110F;
+            outline: 0;
+            box-shadow: 0 0 5px rgba(120, 200, 240, 0.5);
+            
+        }
+        .details label {
+        font-size: 12.50px; /* Adjust the font size as needed */
+        }
+
+        .separator {
+            border-top: 2px solid black;
+            width: 110%; /* Ensures the line spans the width */
+        }
+        .order-status {
+            text-align: left;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 2.50%;
+        }
+        .status-icons {
+            display: flex;
+            justify-content: space-around;
+            padding: 2% 10%;
+            align-items: center;
+        }
+    
+        h3 {
+            font-size: 30px;
+            margin-top: -2%;
+            color: #76110F;
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+        }
+        
+        h6{
+        
+            font-size: 20px;
+            margin-top: -0%;
+            color: #76110F;
+            text-align: center;
+            font-family:'Times New Roman', Times, serif
+        }
+        .status-icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center; /* Center-align the icons */
+        }
+
+        .status-icons img {
+            width: 57px; /* Adjust size as needed */
+            height: 56px; /* Adjust size as needed */
+        }
+        
+    
+        .status-icons a {
+            text-decoration: none;
+            transition: transform 0.9s ease;
+        }
+        .status-icons a:hover {
+            transform: scale(1.09);
+        }
+
+
+        /* CSS for clickable order status */
+        .order-status a {
+            text-decoration: none;
+            color: #76110F;
+        }
+        .order-status a:hover {
+            text-decoration: underline;
+            color: #76110F;
+        }
+        
+        /* Styling for progress bar */
+        .progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .progress {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            flex: 1;
+        }
+
+        .progress-inner {
+            height: 100%;
+            background-color: #76110F;
+            width: 0;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .progress-step {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #76110F;
+            border-radius: 50%;
+            top: -10px;
+            transform: translateX(-50%);
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: absolute;
+            top: 30px;
+            left: 0;
+        }
+
+        .progress-label {
+            flex: 1;
+            text-align: center;
+            font-size: 14px;
+        }
+        #cart-count {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #76110F;
+            margin: 15% auto;
+            padding: 50px;
+            border: 2px solid #FFD92A;
+            width: 50%;
+            border-radius: 10px;
+            text-align: center;
+            color: #FFD92A;
+            font-size: x-large;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <nav id="navbar">
+            <a href="home.html"><img src="logo_.png" class="logo"></a>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
+                <li><a href="delivery.html">Delivery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="dropdown">
+                <button class="dropbtn"><i class="fa fa-user"></i> Account <i class="fa fa-caret-down"></i></button>
+                </button>
+                <div class="dropdown-content">
+                    <a href="account.html">My Account</a>
+                    <a href="login.html" id="logoutbtn">Logout</a>
+                </div>
+            </div>
+        </nav>
+        <div class="content">
+            <div class="profile-info">
+                <img src="user.png" class="user">
+                <div class="details">
+                    <label for="name"><h2>Name:</h2></label><br>
+                    <input type="text" id="name" value="..."><br><br>
+                    <label for="email"><h2>Email:</h2></label><br>
+                    <input type="text" id="email" value="...@gmail.com"><br><br>
+                    <label for="phone"><h2>Phone:</h2></label><br>
+                    <input type="text" id="phone" value="000-0000-000"><br><br>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="order-status">
+                <a href="#" id="orderStatusLink"><h3>Order Status:</h3></a>
+                <h6> your order is... </h6>
+            </div>
+            <div class="progress-bar">
+                <div class="progress">
+                    <div class="progress-inner" id="progressInner"></div>
+                    <div class="progress-step" style="left: 25%;"></div>
+                    <div class="progress-step" style="left: 50%;"></div>
+                    <div class="progress-step" style="left: 75%;"></div>
+                    <div class="progress-step" style="left: 100%;"></div>
+                </div>
+                <div class="progress-labels">
+                    <div class="progress-label">Order Received</div>
+                    <div class="progress-label">Being Prepared</div>
+                    <div class="progress-label">On The Way</div>
+                    <div class="progress-label">Delivered</div>
+                </div>
+            </div>
+
+            <div class="status-icons">
+                <a href="#" class="order1" data-progress="25">
+                    <img src="order1.png" alt="Order Received">
+                    <div class="countdown-timer"></div>
+                </a>
+                <a href="#" class="order2" data-progress="50">
+                    <img src="order2.png" alt="Order Being Prepared">
+                    <div class="countdown-timer"></div>
+                </a>
+                <a href="#" class="order3" data-progress="75" >
+                    <img src="order3.png" alt="Order On The Way">
+                    <div class="countdown-timer"></div>
+                </a>
+                <a href="#" class="order4" data-progress="100" >
+                    <img src="order4.png" alt="Order Delivered">
+                    <div class="countdown-timer"></div>
+                </a>
+            </div>
+        </div>
+
+    <div class="modal" id="logout-modal">
+        <div class="modal-content">
+            <p>Logging-out...</p>
+        </div>
+    </div>
+    </div>
+    
+
+    <script>
+    // para automatic carpet (order status)
+    document.addEventListener('DOMContentLoaded', function () {
+    var statusIcons = document.querySelectorAll('.status-icons a');
+    var progressInner = document.getElementById('progressInner');
+    var orderStatusMessage = document.querySelector('.order-status h6');
+    var currentStep = 0;
+    var messages = [
+        "Order is received, please wait until we process your order.",
+        "Order is now preparing, please be patient.",
+        "Order is out for delivery, please prepare the exact amount.",
+        "Thank you for ordering, we hope you enjoy your food!"
+    ];
+
+    //PARA SA ORDER STATUS!
+    function updateOrderStatus() {
+    if (currentStep < statusIcons.length) {
+        var icon = statusIcons[currentStep];
+        var progress = icon.getAttribute('data-progress');
+        var message = messages[currentStep];
+
+        progressInner.style.width = progress + '%';
+        orderStatusMessage.innerText = message;
+
+        // Start countdown timer
+        var countdownTimer = icon.querySelector('.countdown-timer');
+        var seconds = 10; // NEED I-ADJUST!
+
+        var countdownInterval = setInterval(function () {
+            var hours = Math.floor(seconds / 3600);
+            var minutes = Math.floor((seconds % 3600) / 60);
+            var secs = seconds % 60;
+
+            countdownTimer.innerHTML = 
+                ('0' + hours).slice(-2) + ':' +
+                ('0' + minutes).slice(-2) + ':' +
+                ('0' + secs).slice(-2);
+
+            seconds--;
+
+            if (seconds < 0) {
+                clearInterval(countdownInterval);
+                countdownTimer.innerText = '';
+            }
+        }, 1000);
+
+        currentStep++;
+    }
+}
+    //start the order status updates!
+    updateOrderStatus();
+
+    // TIMER!!!
+    setInterval(updateOrderStatus, 10000); //milliseconds used
+});
+
+//cart-count
+document.addEventListener("DOMContentLoaded", function() {
+        updateCartCount(); // Update cart count when the page loads
+        loadCart(); // Existing function call to load the cart items
+    });
+
+    function updateCartCount() {
+        let cartCount = Object.values(JSON.parse(localStorage.getItem('cart')) || {}).reduce((a, b) => a + b, 0);
+        document.getElementById('cart-count').innerText = cartCount;
+    }
+    
+
+    //modal
+    document.addEventListener("DOMContentLoaded", function() {
+    const logoutBtn = document.getElementById('logoutbtn'); // Corrected selector to match HTML
+    const modal = document.getElementById('logout-modal'); // Ensure this matches the modal ID
+
+    logoutBtn.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        modal.style.display = 'block'; // Display modal
+        setTimeout(function() {
+            window.location.href = 'login.html'; // Redirect to login page
+        }, 2000); // 2 seconds delay
+    });
+});
+    </script>
+</body>
+</html>

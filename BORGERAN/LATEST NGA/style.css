@@ -1,0 +1,65 @@
+body, html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+.hero {
+  width: 100px;
+  padding: 0 2%;
+  position: relative;
+  height: 100vh; /* This might need adjustment based on your content */
+}
+nav {
+width: 10%;
+height: 15%;
+display: flex;
+align-items: right;
+justify-content: space-between;
+}
+.borger {
+  height: 75vh;
+  width: 95vh;
+  margin-bottom: 2%;
+  margin-top: 55%;
+  position: absolute;
+}
+.borgeran {
+  height: 45vh;
+  width: 95vh;
+  position:absolute;
+  top: 20%;
+  margin-left: 435%;
+  
+}
+.content {
+  text-align: right;
+  color: #FDEFB2;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  position: absolute;
+  top: 89%;
+  left: 205vh;
+  transform: translateY(-50%);
+}
+.btn1 {
+  background-color: #F5AA27; /* Green */
+  border: none;
+  border-radius:  50px;
+  color: #76110F;
+  padding: 20px 85px;
+  text-align: center;
+  text-decoration: none;
+  position: absolute;
+  cursor: pointer;
+  margin-left: 125vh;
+  margin-top: 65vh;
+  font-weight: bold;
+  font-size: 120%;
+  white-space: nowrap; /* Prevent text from wrapping */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.btn1:hover {
+  background-color:white ;
+  color: #76110F;
+}
