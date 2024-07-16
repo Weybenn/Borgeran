@@ -186,7 +186,7 @@
         </div>
 
         <div class="container">
-            <form id="signupForm" action="login.html" method="post" onsubmit="return validateForm()">
+            <form id="signupForm">
                 <input type="text" name="user_name" placeholder="Username" required>
                 <input type="email" name="email" placeholder="Email Address" required>
                 <input type="text" name="address" placeholder="Address" required>
@@ -211,6 +211,15 @@
                     return true;
                 }
             }
+
+            document.getElementById("signupForm").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent the form from submitting in the traditional way
+
+                if (validateForm()) {
+                    // Redirect to login.html if the validation is successful
+                    window.location.href = 'login.html';
+                }
+            });
 
             document.getElementById("password").addEventListener("input", checkPasswordMatch);
             document.getElementById("confirm_password").addEventListener("input", checkPasswordMatch);
