@@ -53,7 +53,7 @@
         nav ul{
             flex: 1;
             text-align: center;
-            margin-left: 231px;
+            margin-left: 220px;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
         nav ul li{
@@ -337,6 +337,41 @@
             font-size: x-large;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
+        .search-bar {
+            text-align: center;
+            margin: 0 0;
+            margin-top: 10%;
+        }
+        .search-bar input[type="text"] {
+            width: 53%;
+            padding: 10px;
+            font-size: 20px;
+            border: 2px solid #76110F;
+            border-radius: 5px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-bottom: 4%;
+            position: absolute;
+            margin-left: 65px;
+            
+        }
+        .search-bar button {
+            padding: 11px 21px;
+            font-size: 20px;
+            border: 2px solid #76110F;
+            border-radius: 5px;
+            background-color: #76110F;
+            color: #FFD92A;
+            cursor: pointer;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            position: inherit;
+            margin-top: 24px;
+            margin-left: 56%;
+
+        }
+        .search-bar button:hover {
+            background-color: #FFD92A;
+            color: #76110F;
+        }
        
     </style>
 </head>
@@ -346,6 +381,7 @@
             <a href="home.html"><img src="logo_.png" class="logo"></a>
             <ul>
                 <li><a href="home.html">Home</a></li>
+                <li> <a href="about.html" > About</a></li>
                 <li><a href="menu.html" class="active">Menu</a></li>
                 <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
                 <li><a href="delivery.html">Delivery</a></li>
@@ -359,28 +395,30 @@
                 </div>
             </div>
         </nav>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for products..." oninput="filterGallery()">
+            <button onclick="filterGallery()">Search</button>
+        </div>
+        
     </div>
-    <h3>Indulge in our classic favorites or try something new with our specialty items. 
-        Delivering delicious, high-quality meals at lightning &emsp;&emsp;&emsp;speed. 
-        Explore our menu and taste the difference today!</h3>
     <div class="gallery-wrap">
         <img src="back.png" alt="Previous" id="backBtn" onclick="moveGallery(-1)">
         <div class="gallery">
             <div id="gallery-inner">
                 <div class="container">
-                    <img src="classicborger.png" alt="Dish 1" class="image">
+                    <img src="classicborger.png" alt="Classin Borger" class="image">
                     <div class="overlay">
                         <button onclick="addToCart('Classic Borger')">ADD TO CART</button>
                     </div>
                 </div>
                 <div class="container">
-                    <img src="specialborger.png" alt="Dish 3" class="image">
+                    <img src="specialborger.png" alt="Special Borger" class="image">
                     <div class="overlay">
                         <button onclick="addToCart('Special Borger')">ADD TO CART</button>
                     </div>
                 </div>
                 <div class="container">
-                    <img src="comboborger.png" alt="Dish 2" class="image">
+                    <img src="comboborger.png" alt="Combo Borger" class="image">
                     <div class="overlay">
                         <button onclick="addToCart('Combo Borger')">ADD TO CART</button>
                     </div>
@@ -389,21 +427,21 @@
 
             <div>
                 <div class="container">
-                    <img src="friessolo.png" alt="Dish 4" class="image">
+                    <img src="friessolo.png" alt="Fries Solo" class="image">
                     <div class="overlay">
                         <button onclick="addToCart('Fries Solo')">ADD TO CART</button>
                     </div>
                 </div>
 
                 <div class="container">
-                    <img src="friesmedio.png" alt="Dish 5" class="image">
+                    <img src="friesmedio.png" alt="Fries Medio" class="image">
                     <div class="overlay">
                         <button onclick="addToCart('Fries Medio')">ADD TO CART</button>
                     </div>
                 </div>
 
                 <div class="container">
-                    <img src="friesgrupo.png" alt="Dish 6" class="image">
+                    <img src="friesgrupo.png" alt="Fries Grupo" class="image">
                     <div class="overlay">
                         <button onclick="addToCart('Fries Grupo')">ADD TO CART</button>
                     </div>
@@ -412,21 +450,21 @@
 
             <div>
                 <div class="container">
-                    <img src="bottledwater.png" alt="Dish 7" class="image">
+                    <img src="bottledwater.png" alt="Bottled Water" class="image">
                     <div class="overlay">
                         <button onclick="addToCart('Bottled Water')">ADD TO CART</button>
                     </div>
                 </div>
 
                 <div class="container">
-                    <img src="redsoda.png" alt="Dish 8" class="image">
+                    <img src="redsoda.png" alt="Red Soda" class="image">
                     <div class="overlay">
                         <button onclick="addToCart('Red Soda')">ADD TO CART</button>
                     </div>
                 </div>
 
                 <div class="container">
-                    <img src="orangesoda.png" alt="Dish 9" class="image">
+                    <img src="orangesoda.png" alt="Orange Soda" class="image">
                     <div class="overlay">
                         <button onclick="addToCart('Orange Soda')">ADD TO CART</button>
                     </div>
@@ -435,21 +473,21 @@
 
             <div>
                 <div class="container">
-                    <img src="greensoda.png" alt="Dish 10" class="image">
+                    <img src="greensoda.png" alt="Green Soda" class="image">
                     <div class="overlay">
                         <button onclick="addToCart('Green Soda')">ADD TO CART</button>
                     </div>
                 </div>
 
                 <div class="container">
-                    <img src="bluesoda.png" alt="Dish 11" class="image">
+                    <img src="bluesoda.png" alt="Blue Soda" class="image">
                     <div class="overlay">
                         <button onclick="addToCart('Blue Soda')">ADD TO CART</button>
                     </div>
                 </div>
 
                 <div class="container">
-                    <img src="lemon.png" alt="Dish 12" class="image">
+                    <img src="lemon.png" alt="Lemon Iced Tea" class="image">
                     <div class="overlay">
                         <button onclick="addToCart('Lemon Iced Tea')">ADD TO CART</button>
                     </div>
@@ -537,7 +575,41 @@ document.addEventListener("DOMContentLoaded", function() {
                 }, 2000); // 2 seconds delay
             });
         });
+    
+        function filterGallery() {
+    var input, filter, gallery, items, img, alt, i;
+    input = document.getElementById("searchInput");
+    filter = input.value.toLowerCase();
+    gallery = document.querySelector('.gallery');
 
-    </script>
+    items = gallery.querySelectorAll(".container");
+
+    var found = false;
+
+    items.forEach(function(item) {
+        img = item.querySelector("img");
+        alt = img.alt.toLowerCase();
+        
+        if (alt.includes(filter) && !found) {
+            found = true;
+            item.style.display = "grid"; // Show matching item
+            item.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the item
+        } else {
+            item.style.display = "none"; // Hide non-matching items
+        }
+    });
+
+    if (!found) {
+        // Handle case when no items match the search term
+        alert('No products found matching your search.');
+        input.value = ''; // Clear search input
+        items.forEach(function(item) {
+            item.style.display = "grid"; // Show all items again
+        });
+    }
+}
+
+</script>
+
 </body>
 </html>

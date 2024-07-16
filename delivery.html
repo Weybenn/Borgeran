@@ -19,7 +19,7 @@
         }
         body {
             background-color: #FFD92A;
-            overflow: hidden;
+            overflow-x: hidden;
         }
         .bg {
             max-width: 100%;
@@ -381,6 +381,118 @@
             top: -10px;
             right: -10px;
 }
+        .order-status {
+            text-align: left;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 2.50%;
+        }
+        .status-icons {
+            display: flex;
+            justify-content: space-around;
+            padding: 2% 10%;
+            align-items: center;
+        }
+    
+        h3 {
+            font-size: 30px;
+            margin-top: -2%;
+            color: #76110F;
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+        }
+        
+        h6{
+        
+            font-size: 20px;
+            margin-top: -0%;
+            color: #76110F;
+            text-align: center;
+            font-family:'Times New Roman', Times, serif
+        }
+        .status-icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center; /* Center-align the icons */
+        }
+
+        .status-icons img {
+            width: 57px; /* Adjust size as needed */
+            height: 56px; /* Adjust size as needed */
+        }
+        
+    
+        .status-icons a {
+            text-decoration: none;
+            transition: transform 0.9s ease;
+        }
+        .status-icons a:hover {
+            transform: scale(1.09);
+        }
+
+
+        /* CSS for clickable order status */
+        .order-status a {
+            text-decoration: none;
+            color: #76110F;
+        }
+        .order-status a:hover {
+            text-decoration: underline;
+            color: #76110F;
+        }
+        
+        /* Styling for progress bar */
+        .progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .progress {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            flex: 1;
+        }
+
+        .progress-inner {
+            height: 100%;
+            background-color: #76110F;
+            width: 0;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .progress-step {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #76110F;
+            border-radius: 50%;
+            top: -10px;
+            transform: translateX(-50%);
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: absolute;
+            top: 30px;
+            left: 0;
+        }
+
+        .progress-label {
+            flex: 1;
+            text-align: center;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -389,9 +501,10 @@
             <a href="home.html"><img src="logo_.png" class="logo"></a>
             <ul>
                 <li><a href="home.html">Home</a></li>
+                <li> <a href="about.html" > About</a></li>
                 <li><a href="menu.html">Menu</a></li>
                 <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
-                <li><a href="delivery.html" class="active">Delivery</a></li>
+                <li><a href="delivery.html"  class="active">Delivery</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="dropdown">
@@ -443,7 +556,7 @@
                                 <label for="gcash"><img src="gcashicon.png" alt="GCash" style="width: 20px; filter: brightness(0) invert(1);"> GCash</label>
                                 <br>
                                 <input type="radio" id="cod" name="payment-method" value="cod">
-                                <label for="cod">COD</label>
+                                <label for="cod"><img src="COD.png" alt="COD" style="width:60px;"></label>
                                 <br>
                             </div>
                             <label for="cname">Account Name</label>
@@ -466,6 +579,47 @@
             <h2>Receipt</h2>
             <ul id="receipt-items"></ul>
             <p>Total: <span id="total-amount"></span></p>
+        </div>
+    </div>
+    
+    <div class="content">
+        <div class="order-status">
+            <a href="#" id="orderStatusLink"><h3>Order Status:</h3></a>
+            <h6> your order is... </h6>
+        </div>
+        <div class="progress-bar">
+            <div class="progress">
+                <div class="progress-inner" id="progressInner"></div>
+                <div class="progress-step" style="left: 25%;"></div>
+                <div class="progress-step" style="left: 50%;"></div>
+                <div class="progress-step" style="left: 75%;"></div>
+                <div class="progress-step" style="left: 100%;"></div>
+            </div>
+            <div class="progress-labels">
+                <div class="progress-label">Order Received</div>
+                <div class="progress-label">Being Prepared</div>
+                <div class="progress-label">On The Way</div>
+                <div class="progress-label">Delivered</div>
+            </div>
+        </div>
+
+        <div class="status-icons">
+            <a href="#" class="order1" data-progress="25">
+                <img src="order1.png" alt="Order Received">
+                <div class="countdown-timer"></div>
+            </a>
+            <a href="#" class="order2" data-progress="50">
+                <img src="order2.png" alt="Order Being Prepared">
+                <div class="countdown-timer"></div>
+            </a>
+            <a href="#" class="order3" data-progress="75" >
+                <img src="order3.png" alt="Order On The Way">
+                <div class="countdown-timer"></div>
+            </a>
+            <a href="#" class="order4" data-progress="100" >
+                <img src="order4.png" alt="Order Delivered">
+                <div class="countdown-timer"></div>
+            </a>
         </div>
     </div>
 
@@ -607,6 +761,65 @@
         let cartCount = Object.values(JSON.parse(localStorage.getItem('cart')) || {}).reduce((a, b) => a + b, 0);
         document.getElementById('cart-count').innerText = cartCount;
     }
+
+
+     // para automatic carpet (order status)
+     document.addEventListener('DOMContentLoaded', function () {
+    var statusIcons = document.querySelectorAll('.status-icons a');
+    var progressInner = document.getElementById('progressInner');
+    var orderStatusMessage = document.querySelector('.order-status h6');
+    var currentStep = 0;
+    var messages = [
+        "Order is received, please wait until we process your order.",
+        "Order is now preparing, please be patient.",
+        "Order is out for delivery, please prepare the exact amount.",
+        "Thank you for ordering, we hope you enjoy your food!"
+    ];
+
+    //PARA SA ORDER STATUS!
+    function updateOrderStatus() {
+    if (currentStep < statusIcons.length) {
+        var icon = statusIcons[currentStep];
+        var progress = icon.getAttribute('data-progress');
+        var message = messages[currentStep];
+
+        progressInner.style.width = progress + '%';
+        orderStatusMessage.innerText = message;
+
+        // Start countdown timer
+        var countdownTimer = icon.querySelector('.countdown-timer');
+        var seconds = 1800; // NEED I-ADJUST!
+
+        var countdownInterval = setInterval(function () {
+            var hours = Math.floor(seconds / 3600);
+            var minutes = Math.floor((seconds % 3600) / 60);
+            var secs = seconds % 60;
+
+            countdownTimer.innerHTML = 
+                ('0' + hours).slice(-2) + ':' +
+                ('0' + minutes).slice(-2) + ':' +
+                ('0' + secs).slice(-2);
+
+            seconds--;
+
+            if (seconds < 0) {
+                clearInterval(countdownInterval);
+                countdownTimer.innerText = '';
+            }
+        }, 1000);
+
+        currentStep++;
+    }
+}
+    //start the order status updates!
+    updateOrderStatus();
+
+    // TIMER!!!
+    setInterval(updateOrderStatus, 1800000); //milliseconds used
+});
+
+
+
     </script>
 </body>
 </html>
