@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="icon.png" type="image/x-icon">
+
+    <title>Menu</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="cart.js" defer></script>
+    <style>
+       * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #FFD92A;
+            overflow-x: hidden;
+        }
+        .bg{
+            max-width: 100%;
+            background-size: 100%;
+        }
+        .hero{
+            width: 100%;
+            height: 100%;          
+            padding: 0, 2%;
+        }
+
+        nav{
+            width: 100%;
+            height: 15%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #76110F;
+            position: absolute;
+            margin-bottom: 0;
+            margin-top: -10%;
+            
+        }
+        nav .logo{
+            width: 200px;
+            cursor: pointer;
+            margin-right: 2%;
+            margin-left: 0%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            align-items: center;
+        }
+        nav ul{
+            flex: 1;
+            text-align: center;
+            margin-left: 231px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        nav ul li{
+            list-style: none;
+            display: inline-flex;
+            margin: 10px 12px;
+            margin-bottom: 0%;
+            margin-right: 0%;
+            position: relative;
+        }
+        nav ul li a{
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 24px;
+            padding: 3px;
+            position: relative;
+            transition: color 0.3s ease;
+            z-index: 1;
+        }
+        nav ul li a::after {
+                content: '';
+                position: absolute;
+                left: 45%;
+                bottom: -33px;
+                width: 100%;
+                height: 5px;
+                background: #FFD92A;
+                transition: width 0.3s ease, left 0.3s ease;
+                z-index: -1;
+                transform: translateX(-15%) scaleX(0);
+                transform-origin: center;
+                border-radius: 10%;
+            }
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 120%;
+            height: 260%;
+            left: -0.25%;
+            transform: translateX(-9%) scaleX(0.9);
+        }
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #76110F;
+        }
+        nav .dropdown {
+                float: right;
+                overflow: hidden;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                
+            }
+
+            nav .dropdown .dropbtn {
+              
+              border: none;
+              outline: none;
+              color: white;
+              padding: 14px 16px;
+              background-color: inherit;
+              margin: 0;
+              font-size: 24px;
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+              text-decoration: none;
+              font-weight: 600;
+              font-size: 24px;
+              padding: 3px;
+              position: relative;
+              align-items: center;
+              margin-right: 200px;
+              padding-right: 10px;
+              border-radius: 5px;
+              padding-top: 10%;
+              padding-bottom: 12%;
+              margin-top: 33%;
+          }
+            nav .dropdown-content {
+                border-radius: 5px;
+                display: none;
+                position: absolute;
+                background-color: #FFD92A;
+                min-width: 128px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+                font-size: large;
+                margin-top: -5%;
+                margin-left: 7.5%;
+                
+            }
+
+            nav .dropdown-content a {
+            float: none;
+            color: #76110F;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-size: larger;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            nav .dropdown-content a:hover {
+                background-color: #FFD92A;
+                color: #fff;
+            }
+
+            nav .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            nav .dropdown:hover .dropbtn {
+                background-color: #FFD92A;
+                color: #76110F;
+            }
+        h3 {
+            font-size: 25px;
+            color: #76110F;
+            text-align: justify;
+            margin-left: 25%;
+            margin-right: 25%;
+            margin-top: 10%;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .gallery {
+            width: 1000px;
+            display: flex;
+            overflow: scroll;
+        }
+        .gallery div {
+            width: 98%;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: 1px;
+            padding: 1px 5px 1px;
+            flex: none;
+            padding-left: 0.1%;
+            margin-left: 1.5%;
+            margin-right: 1%;
+        }
+        .gallery div img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-left: 1.5%;
+        }
+        .gallery div img:hover {
+            filter: grayscale(0);
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+        .gallery::-webkit-scrollbar {
+            display: none;
+        }
+        .gallery-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2% 10%;
+        }
+        #backBtn, #nextBtn {
+            width: 90px;
+            cursor: pointer;
+            margin: 40px;
+            transition: transform 0.3s ease;
+            margin-bottom: 10%;
+            margin-top: 10%;
+            
+        }
+        #backBtn:hover, #nextBtn:hover {
+            transform: scale(1.2);
+        }
+        .container {
+            position: relative;
+            width: 50%;
+        }
+        .image {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: #405B35;
+            border-radius: 10px;
+            z-index: 2;
+        }
+        .container:hover .overlay {
+            opacity: 0.9;
+        }
+        button {
+            color: #FFD92A;
+            font-size: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            border: 2px solid #FFD92A;
+            padding: 5px 20px;
+            border-radius: 5px;
+            width: fit-content;
+            text-decoration: none;
+            background-color: #76110F;
+            cursor: pointer;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2;
+            left: 0;
+            top: 15%;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #76110F;
+            margin: 15% auto;
+            padding: 50px;
+            border: 2px solid #FFD92A;
+            width: 50%;
+            border-radius: 10px;
+            text-align: center;
+            color: #fff;
+            font-size: x-large;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+        .close {
+            color: #fff;
+            float: right;
+            font-size: xx-large;
+            font-weight: bold;
+            border: 2px solid #FFD92A;
+            
+        }
+        .close:hover,
+        .close:focus {
+            color: #FFD92A;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #cart-count {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
+        .modals {
+            display: none;
+            position: fixed;
+            z-index: 2;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modals-content {
+            background-color: #76110F;
+            margin: 15% auto;
+            padding: 50px;
+            border: 2px solid #FFD92A;
+            width: 50%;
+            border-radius: 10px;
+            text-align: center;
+            color: #FFD92A;
+            font-size: x-large;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+       
+    </style>
+</head>
+<body background="bgmenu.png" class="bg">
+    <div class="hero">
+        <nav id="navbar">
+            <a href="home.html"><img src="logo_.png" class="logo"></a>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
+                <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
+                <li><a href="delivery.html">Delivery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="dropdown">
+                <button class="dropbtn"><i class="fa fa-user"></i> Account <i class="fa fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="account.html">My Account</a>
+                    <a href="login.html" id="logoutbtn">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <h3>Indulge in our classic favorites or try something new with our specialty items. 
+        Delivering delicious, high-quality meals at lightning &emsp;&emsp;&emsp;speed. 
+        Explore our menu and taste the difference today!</h3>
+    <div class="gallery-wrap">
+        <img src="back.png" alt="Previous" id="backBtn" onclick="moveGallery(-1)">
+        <div class="gallery">
+            <div id="gallery-inner">
+                <div class="container">
+                    <img src="classicborger.png" alt="Dish 1" class="image">
+                    <div class="overlay">
+                        <button onclick="addToCart('Classic Borger')">ADD TO CART</button>
+                    </div>
+                </div>
+                <div class="container">
+                    <img src="specialborger.png" alt="Dish 3" class="image">
+                    <div class="overlay">
+                        <button onclick="addToCart('Special Borger')">ADD TO CART</button>
+                    </div>
+                </div>
+                <div class="container">
+                    <img src="comboborger.png" alt="Dish 2" class="image">
+                    <div class="overlay">
+                        <button onclick="addToCart('Combo Borger')">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="container">
+                    <img src="friessolo.png" alt="Dish 4" class="image">
+                    <div class="overlay">
+                        <button onclick="addToCart('Fries Solo')">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <img src="friesmedio.png" alt="Dish 5" class="image">
+                    <div class="overlay">
+                        <button onclick="addToCart('Fries Medio')">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <img src="friesgrupo.png" alt="Dish 6" class="image">
+                    <div class="overlay">
+                        <button onclick="addToCart('Fries Grupo')">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="container">
+                    <img src="bottledwater.png" alt="Dish 7" class="image">
+                    <div class="overlay">
+                        <button onclick="addToCart('Bottled Water')">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <img src="redsoda.png" alt="Dish 8" class="image">
+                    <div class="overlay">
+                        <button onclick="addToCart('Red Soda')">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <img src="orangesoda.png" alt="Dish 9" class="image">
+                    <div class="overlay">
+                        <button onclick="addToCart('Orange Soda')">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="container">
+                    <img src="greensoda.png" alt="Dish 10" class="image">
+                    <div class="overlay">
+                        <button onclick="addToCart('Green Soda')">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <img src="bluesoda.png" alt="Dish 11" class="image">
+                    <div class="overlay">
+                        <button onclick="addToCart('Blue Soda')">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <img src="lemon.png" alt="Dish 12" class="image">
+                    <div class="overlay">
+                        <button onclick="addToCart('Lemon Iced Tea')">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="next.png" alt="Next" id="nextBtn" onclick="moveGallery(1)">
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <button class="close"><i class="fa fa-check"></i></button>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <div class="modals" id="logout-modals">
+        <div class="modals-content">
+            <p>Logging-out...</p>
+        </div>
+    </div>
+
+
+    <!--JAVASCRIPT-->
+    <script>
+       let cart = {};
+
+function showNotification(productName) {
+    var modal = document.getElementById("myModal");
+    var modalText = document.getElementById("modal-text");
+    modalText.innerText = productName + ' is added to cart!';
+    modal.style.display = "block";
+
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+    let cartCount = Object.values(cart).reduce((a, b) => a + b, 0);
+    document.getElementById('cart-count').innerText = cartCount || '0';
+}
+
+function addToCart(productName) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+    if (cart[productName]) {
+        cart[productName]++;
+    } else {
+        cart[productName] = 1;
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    showNotification(productName);
+    updateCartCount();
+}
+
+function moveGallery(direction) {
+    var gallery = document.querySelector('.gallery');
+    var scrollAmount = gallery.clientWidth;
+    gallery.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+    });
+}
+
+document.addEventListener('DOMContentLoaded', updateCartCount);
+
+document.addEventListener("DOMContentLoaded", function() {
+            const logoutBtn = document.getElementById('logoutbtn');
+            const modal = document.getElementById('logout-modals');
+
+            logoutBtn.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default link behavior
+                modal.style.display = 'block'; // Display modal
+                setTimeout(function() {
+                    window.location.href = 'login.html'; // Redirect to login page
+                }, 2000); // 2 seconds delay
+            });
+        });
+
+    </script>
+</body>
+</html>
