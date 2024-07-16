@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Log in</title>
-        <link rel="icon" href="icon.png" type="image/x-icon">
-        
-        <style>
-   * {
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="icon" href="icon.png" type="image/x-icon">
+
+    <style>
+        * {
             margin: 0px;
             padding: 0px;
             box-sizing: border-box;
         }
-        body{
+        body {
             background-color: #FFD92A;
             overflow-x: hidden;
         }
-        .bg{
+        .bg {
             max-width: 100%;
             background-size: 100%;
         }
-        .hero{
+        .hero {
             width: 100%;
             height: 100%;          
             padding: 0, 2%;
         }
 
-        nav{
+        nav {
             width: 100%;
             height: 15%;
             display: flex;
@@ -36,9 +36,8 @@
             position: absolute;
             margin-bottom: 0;
             margin-top: 0%;
-            
         }
-        nav .logo{
+        nav .logo {
             width: 200px;
             cursor: pointer;
             margin-right: 2%;
@@ -47,13 +46,13 @@
             margin-bottom: 2%;
             align-items: center;
         }
-        nav ul{
+        nav ul {
             flex: 1;
             text-align: center;
             margin-left: 130px;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
-        nav ul li{
+        nav ul li {
             list-style: none;
             display: inline-flex;
             margin: 10px 12px;
@@ -61,7 +60,7 @@
             margin-right: 0%;
             position: relative;
         }
-        nav ul li a{
+        nav ul li a {
             text-decoration: none;
             color: white;
             font-weight: 600;
@@ -101,7 +100,6 @@
             margin-right: 2%;
         }
 
-
         .wrapper {
             float: left;
             width: 25%; /* Adjust width as needed */
@@ -121,8 +119,8 @@
             input[type="password"]::placeholder {
                 color: white; /* Change the color here */
             }
-            }
-        h1{
+        }
+        h1 {
             color: #76110F;
             text-align: right;
             margin-top: 10%;
@@ -149,7 +147,6 @@
             font-weight: bold;
         }
 
-
         input[type="submit"] {
             height: 60px;
             background-color: #76110F;
@@ -168,7 +165,7 @@
             background-color: #405B35;
         }
 
-        h2{
+        h2 {
             color: white;
             text-align: left;
             margin-top: 50%;
@@ -178,7 +175,7 @@
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
 
-        p{
+        p {
             color: white;
             text-align: left;
             margin-bottom: 15%;
@@ -186,7 +183,7 @@
             font-size: 20px;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
         }
-        .btn{
+        .btn {
             height: 60px;
             background-color: #FFD92A;
             color: #76110F;
@@ -201,49 +198,66 @@
             text-decoration: none;
         }
         .btn:hover {
-        background-color: #405B35; /* Change background color on hover */
-        color: white; /* Change text color on hover */
+            background-color: #405B35; /* Change background color on hover */
+            color: white; /* Change text color on hover */
         }
-        
+    </style>
+</head>
 
-        
-
-        </style>
-    </head>
-    
-    <body background="bglogin.png" class="bg">
-        <div class="hero">
-            <nav id="navbar">
-                <img src="logo_.png" class="logo">
+<body background="bglogin.png" class="bg">
+    <div class="hero">
+        <nav id="navbar">
+            <img src="logo_.png" class="logo">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Menu</a></li>
+                <li><a href="">Cart</a></li>
+                <li><a href="">Delivery</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+            <div class="login-signup">
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Menu</a></li>
-                    <li><a href="">Cart</a></li>
-                    <li><a href="">Delivery</a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a href="login.html" class="active">Log in</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
                 </ul>
-                <div class="login-signup">
-                    <ul>
-                        <li><a href="login.html" class="active">Log in</a></li>
-                        <li><a href="signup.html">Sign Up</a></li>
-                    </ul>
-                </div>
-            </nav>
+            </div>
+        </nav>
 
-            <div class="wrapper">
-                <div class="signup">
-                    <h2>NEW HERE?</h2>
-                    <p>&nbsp;&nbsp;Sign up and get a great<br> amount of new products!</p>
-                    <div class="button">
-                        <a href="signup.html" class="btn"><b>Sign Up</b></a> 
-                    </div>
+        <div class="wrapper">
+            <div class="signup">
+                <h2>NEW HERE?</h2>
+                <p>&nbsp;&nbsp;Sign up and get a great<br> amount of new products!</p>
+                <div class="button">
+                    <a href="signup.html" class="btn"><b>Sign Up</b></a> 
                 </div>
             </div>
-            <div class="container">
-                <h1>LOG IN TO YOUR ACCOUNT</h1>
-                <form action="home.html" method="post">
-                    <input type="text" name="user name" placeholder="Username" required>
-                    <input type="password" name="password" placeholder="Password" required>
-                    <input type="submit" value="Log in">
-                </form>
-            </div>
+        </div>
+        <div class="container">
+            <h1>LOG IN TO YOUR ACCOUNT</h1>
+            <form id="login-form">
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <input type="submit" value="Log in">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting in the traditional way
+
+            // Get the form values
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simple validation
+            if (username && password) {
+                // Redirect to home.html or handle login logic
+                window.location.href = 'home.html';
+            } else {
+                alert('Please enter both username and password');
+            }
+        });
+    </script>
+</body>
+</html>
